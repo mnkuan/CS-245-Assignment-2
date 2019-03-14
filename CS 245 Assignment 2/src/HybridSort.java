@@ -38,9 +38,6 @@ public class HybridSort {
     if (left < right) {
       int pivot = randomPartition(arr, left, right);
 
-      quicksort(arr, left, pivot - 1);
-      quicksort(arr, pivot + 1, right);
-
       return pivot;
     }
 
@@ -99,13 +96,13 @@ public class HybridSort {
   }
 
   public static void hybridsort(double[] arr, int left, int right) {
-    while (true) {
-      if ((right - left) < 10) {
-        quadraticsort(arr, left, right);
-        break;
-      } else {
-        quicksort(arr, left, right);
-      }
+    if ((right - left) < 10) {
+      quadraticsort(arr, left, right);
+    } else {
+      int pivot = quicksort(arr, left, right);
+
+      hybridsort(arr, left, pivot - 1);
+      hybridsort(arr, pivot + 1, right);
     }
   }
 
@@ -132,7 +129,7 @@ public class HybridSort {
   public static void main(String[] args) {
     double[] array = { 13, 19, 9, 5, 12, 8, 7, 4, 21, 2, 6, 11 };
 
-    HybridSort.quicksort(array, 0, array.length - 1);
+    HybridSort.hybridsort(array, 0, array.length - 1);
     System.out.println(Arrays.toString(array));
     // return 2 4 5 6 7 8 9 11 12 13 19 21
 
