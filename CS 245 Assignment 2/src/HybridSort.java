@@ -5,9 +5,6 @@ public class HybridSort {
   /**
    * Sorts an array using insertion sort
    * 
-   * The reason I chose insertion sort out of the three O(n^2) algorithms was
-   * because insertion sort performed faster than the other two sorting algorithms
-   * 
    * @param arr   the array that will be sorted
    * @param left  the beginning side of the array
    * @param right the end side of the array
@@ -96,7 +93,7 @@ public class HybridSort {
   }
 
   public static void hybridsort(double[] arr, int left, int right) {
-    if ((right - left) < 10) {
+    if ((right - left) < 50) {
       quadraticsort(arr, left, right);
     } else {
       int pivot = quicksort(arr, left, right);
