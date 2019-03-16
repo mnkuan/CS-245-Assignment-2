@@ -60,7 +60,7 @@ public class HybridSort {
   /**
    * The partition method of quick sort
    * 
-   * @param arr   the array that will be sorted
+   * @param a   the array that will be sorted
    * @param left  the beginning side of the array
    * @param right the end side of the array
    * @return the new pivot
@@ -92,6 +92,13 @@ public class HybridSort {
     return left;
   }
 
+  /**
+   * Uses quicksort and insertion sort
+   * 
+   * @param arr the array to be sorted
+   * @param left the left side of the array
+   * @param right the right side of the array
+   */
   public static void hybridsort(double[] arr, int left, int right) {
     if ((right - left) < 50) {
       quadraticsort(arr, left, right);
