@@ -20,6 +20,7 @@ public class ExternalSort {
    * @throws IOException
    */
   public void externalSort(String inputFile, String outputFile, int n, int k) throws IOException {
+    HybridSort hSort = new HybridSort();
     Path input = Paths.get(inputFile);
 
     int amtFiles = (int) Math.ceil((double) n / k); // calculates the amount of arrays in the function
@@ -56,7 +57,7 @@ public class ExternalSort {
 
       if (i != 0 && ((i + 1) % k == 0) || (i == (n - 1))) {
         // Sort the array
-        HybridSort.hybridsort(temp, 0, tempSize - 1);
+        hSort.hybridsort(temp, 0, tempSize - 1);
 
         // get names for outputfileTemp
         Path outputTemp = Paths.get(outputFile + fileNUM++ + ".txt");
@@ -125,7 +126,6 @@ public class ExternalSort {
       amtFiles = (amtFiles / 2) + (amtFiles % 2);
       mergeSort(amtFiles, outputFile);
     } // end of if
-
   }
 
   /**
