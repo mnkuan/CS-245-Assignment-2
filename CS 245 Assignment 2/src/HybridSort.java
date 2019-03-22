@@ -9,7 +9,7 @@ public class HybridSort {
    * @param left  the beginning side of the array
    * @param right the end side of the array
    */
-  public static void quadraticsort(double[] arr, int left, int right) {
+  private void quadraticsort(double[] arr, int left, int right) {
     for (int i = left; i < right + 1; i++) {
       double value = arr[i];
       int j = i - 1;
@@ -31,7 +31,7 @@ public class HybridSort {
    * @param right the end side of the array
    * @return the pivot or -1 if not sorted
    */
-  public static int quicksort(double[] arr, int left, int right) {
+  private int quicksort(double[] arr, int left, int right) {
     if (left < right) {
       int pivot = randomPartition(arr, left, right);
 
@@ -49,7 +49,7 @@ public class HybridSort {
    * @param right the end side of the array
    * @return the new pivot
    */
-  private static int randomPartition(double[] arr, int left, int right) {
+  private int randomPartition(double[] arr, int left, int right) {
     Random random = new Random();
     int randIndex = random.nextInt(right - left + 1) + left;
 
@@ -65,7 +65,7 @@ public class HybridSort {
    * @param right the end side of the array
    * @return the new pivot
    */
-  private static int partition(double[] a, int left, int right) {
+  private int partition(double[] a, int left, int right) {
     if (left < right) {
       int pivot = left;
       int i = left + 1;
@@ -99,7 +99,7 @@ public class HybridSort {
    * @param left the left side of the array
    * @param right the right side of the array
    */
-  public static void hybridsort(double[] arr, int left, int right) {
+  public void hybridsort(double[] arr, int left, int right) {
     if ((right - left) < 50) {
       quadraticsort(arr, left, right);
     } else {
@@ -118,26 +118,19 @@ public class HybridSort {
    * @param j   one of the indexes that will swap (the smaller number of the
    *            pivot)
    */
-  private static void swap(double[] arr, int i, int j) {
+  private void swap(double[] arr, int i, int j) {
     double temp = arr[j];
     arr[j] = arr[i];
     arr[i] = temp;
   }
 
-  public static void printArray(double[] array) {
-    for (int i = 0; i < array.length; i++) {
-      System.out.print(array[i] + " ");
-    }
-  }
-
   public static void main(String[] args) {
+    HybridSort hSort = new HybridSort();
     double[] array = { 13, 19, 9, 5, 12, 8, 7, 4, 21, 2, 6, 11 };
 
-    HybridSort.hybridsort(array, 0, array.length - 1);
+    hSort.hybridsort(array, 0, array.length - 1);
     System.out.println(Arrays.toString(array));
     // return 2 4 5 6 7 8 9 11 12 13 19 21
-
-    // System.out.println("\n\n" + index);
   }
 
 }
